@@ -1,6 +1,6 @@
 FROM python:2.7.10-wheezy
-RUN pip install Flask
+RUN pip install Flask flask-mysqldb
 VOLUME ["/app"]
-EXPOSE "5000"
+EXPOSE "80"
 WORKDIR /app
 CMD ["python", "app.py"]
