@@ -1,9 +1,17 @@
+proxy:
+    build: ./containers/proxy
+    volumes:
+        - /var/run/docker.sock:/tmp/docker.sock
+    ports:
+        - "80:80"
 web:
     build: ./containers/web
     volumes:
         - ./code:/app
     ports:
-        - "80:80"
+        - "80"
+    environment:
+        - "VIRTUAL_HOST=demoapp.inet"
     links:
         - db:db
 db:
