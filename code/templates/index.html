@@ -1,13 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
         <div class="jumbotron">
-            <h1>Demo App</h1>
-            <p class="lead"></p>
+            <p class="lead">Curte Docker?</p>
+            <p>
+                <img src="/static/docker-logo.png" alt="Docker logo">
+            </p>
+            <p class="lead">
+                Põe o e-mail aí então:
+            </p>
             <form class="form-signin" action="{{ url_for('subscribe') }}" method="post">
                 <label for="inputEmail" class="sr-only">Email</label>
                 <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
                 <p></p>
                 <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit">Curtir</button>
             </form>
+            <p class="lead"> {{subscriptions}} curtida(s)</p>
         </div>
 {% endblock %}
