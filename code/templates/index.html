@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+        <div class="jumbotron">
+            <h1>Demo App</h1>
+            <p class="lead"></p>
+            <form class="form-signin" action="{{ url_for('subscribe') }}" method="post">
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+                <p></p>
+                <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit">Curtir</button>
+            </form>
+        </div>
+{% endblock %}
