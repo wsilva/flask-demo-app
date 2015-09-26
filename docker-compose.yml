@@ -1,0 +1,6 @@
+web:
+    build: ./containers/web
+    volumes:
+        - ./code:/app
+    ports:
+        - "80:80"
