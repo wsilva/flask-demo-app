@@ -32,7 +32,10 @@ def main():
     hostname=socket.gethostname()
     ipaddr=socket.gethostbyname(hostname)
 
-    return render_template('index.html', ipaddr=ipaddr, hostname=hostname)
+    query = query_db('select count(*) as qtde from subscription')
+
+    subscriptions=query[0]['qtde']
+    return render_template('index.html', subscriptions=subscriptions, ipaddr=ipaddr, hostname=hostname)
 
 @app.route("/subscribe", methods=['POST','GET'])
 def subscribe():

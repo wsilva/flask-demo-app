@@ -3,3 +3,7 @@
 Aplicação utilizada para exemplificar o uso do docker
 
 Antes de iniciar vá ao path `/code` e rode `sqlite3 database.db < schema.sql`
+
+Tags
+V1 - aplicação monolitica
+V2 - aplicação monolitica persistindo em banco sqlite
