@@ -1,0 +1,44 @@
+containers:
+
+    proxy:
+        build:
+            context: containers/proxy
+        image: wfsilva/proxy
+        run:
+            publish: ["80:80", "443:443"]
+            volume: ["/var/run/docker.sock:/tmp/docker.sock"]
+            # tty: true
+            # interactive: true
+            detach: true
+            cmd: "forego start -r"
+
+    web:
+        build:
+            context: containers/web
+        image: wfsilva/web
+        unique: true
+        run:
+            publish: ["80"]
+            volume: ["./code:/app"]
+            link: ["db:db.inet"]
+            env:
+                - "VIRTUAL_HOST=demoapp.inet"
+            # tty: true
+            # interactive: true
+            detach: true
+            cmd: "python app.py"
+
+
+    db:
+        image: mysql
+        run:
+            publish: ["3306:3306"]
+            volume: ["./containers/db:/etc/mysql/conf.d"]
+            env:
+                - MYSQL_ROOT_PASSWORD=123456
+                - MYSQL_DATABASE=demoapp
+            detach: true
+
+groups:
+    default: ["proxy", "web", "db"]
+    databases: ["db"]
