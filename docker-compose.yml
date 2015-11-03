@@ -13,7 +13,7 @@ web:
     environment:
         - "VIRTUAL_HOST=demoapp.inet"
     links:
-        - db:db
+        - db:db.inet
 db:
     image: mysql
     ports:
